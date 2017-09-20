@@ -5,6 +5,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.kaixuan.djstudy.abstractfactory.BlueFactory;
@@ -15,6 +16,12 @@ import com.kaixuan.djstudy.buildermodel.Room;
 import com.kaixuan.djstudy.buildermodel.WorkBuilder;
 import com.kaixuan.djstudy.buildmodel2.Room2;
 import com.kaixuan.djstudy.buildmodel2.WorkBuider2;
+import com.kaixuan.djstudy.handler.AbstractRequest;
+import com.kaixuan.djstudy.handler.Handler;
+import com.kaixuan.djstudy.handler.Handler1;
+import com.kaixuan.djstudy.handler.Handler2;
+import com.kaixuan.djstudy.handler.Handler3;
+import com.kaixuan.djstudy.handler.Request3;
 import com.kaixuan.djstudy.prototype.OrderDealFactory;
 import com.kaixuan.djstudy.prototype.PersonOrder;
 import com.kaixuan.djstudy.simplefactory1.ExportTextOperator;
@@ -29,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 //AOP就是将编译时的代码替换成想要的代码,编译后的代码和非aop的是一样的代码
     //就是打一个注解,在class文件里面做一个替换
 
-    void simpleFactory() {
+    void simpleFactory(View view) {
         //简单工厂
         Factory.create(1).show();
 
@@ -61,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     //原型模式
-    void Prototype() {
+    void Prototype(View view) {
         //保留存根
         OrderDealFactory factory = new OrderDealFactory();
         PersonOrder order = new PersonOrder();
@@ -71,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //建造者模式
-    void builderModle() {
+    void builderModle(View view) {
 
         Build build = new WorkBuilder();
         Designer designer = new Designer();
@@ -107,6 +114,20 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 }).create().show();
+    }
+
+    /**责任链模式.....单链表*/
+    public void handlerModle(View view){
+        //确定链式关系
+        Handler handler1=new Handler1();
+        Handler handler2=new Handler2();
+        Handler handler3=new Handler3();
+        handler1.nextHandler=handler2;
+        handler2.nextHandler=handler3;
+
+        AbstractRequest request3=new Request3("请求1");
+
+        handler1.handleRequest(request3);
     }
 
 }
