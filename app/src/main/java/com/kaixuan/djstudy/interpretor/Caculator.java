@@ -1,7 +1,7 @@
 package com.kaixuan.djstudy.interpretor;
 
 /**
- * Comment: 解释器模式之运算
+ * Comment: 解释器模式之运算=====
  *
  * @author :DJ鼎尔东 / 1757286697@qq.cn
  * @version : Administrator1.0
@@ -30,7 +30,13 @@ public class Caculator {
                 right = new ValueNode(val);
                 //此时新建了一个非终结符
                 lastNode = new DivNode(left, right);
-
+            } else if ("%".equals(stateMents[i])) {
+                //计算除法
+                left = lastNode;
+                int val = Integer.parseInt(stateMents[++i]);
+                right = new ValueNode(val);
+                //此时新建了一个非终结符
+                lastNode = new ModNode(left, right);
             } else {
                 lastNode = new ValueNode(Integer.parseInt(stateMents[i]));
             }

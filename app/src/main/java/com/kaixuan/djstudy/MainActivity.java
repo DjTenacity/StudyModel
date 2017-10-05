@@ -1,6 +1,7 @@
 package com.kaixuan.djstudy;
 
 import android.content.DialogInterface;
+import android.os.AsyncTask;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,6 +28,8 @@ import com.kaixuan.djstudy.prototype.OrderDealFactory;
 import com.kaixuan.djstudy.prototype.PersonOrder;
 import com.kaixuan.djstudy.simplefactory1.ExportTextOperator;
 import com.kaixuan.djstudy.simplefactory2.Factory;
+import com.kaixuan.djstudy.template.Game;
+import com.kaixuan.djstudy.template.LoLGame;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -138,13 +141,45 @@ public class MainActivity extends AppCompatActivity {
         handler1.handleRequest(request3);
     }
 
-    //解释器模式
+    //解释器模式   对于大量重复性操作是十分友好的
+    //必须要有一个抽象接口  ;;;;;  必须要构建语法树
+    //每个语法都要产生一个非终结符表达式,语法规则比较复杂时,就可能产生大量的类文件,为维护带来了麻烦
+    //
+    //递归调用的方法,只能一层一层的剥茧,
     public void interpretor(View view) {
-        String contentString = "3 * 5 * 7 / 3";
+        String contentString = "3 * 5 * 7 / 3  %  36";
         Caculator caculator = new Caculator();
         int result = caculator.build(contentString);
 
     }
 
+    //模板模式         AsyncTask
+    public void template(View view) {
+        Game game = new LoLGame();
+        game.play();
+
+        AsyncTask asyncTask = new AsyncTask() {
+            @Override
+            protected void onPreExecute() {//准备
+                super.onPreExecute();
+            }
+
+            @Override
+            protected Object doInBackground(Object[] params) {//进行
+                return null;
+            }
+
+            @Override
+            protected void onProgressUpdate(Object[] values) {//更新
+                super.onProgressUpdate(values);
+            }
+
+            @Override
+            protected void onPostExecute(Object o) {//结束
+                super.onPostExecute(o);
+            }
+        }.execute();
+    }
 
 }
+//正则表达式"^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$"  ^是开始,$是结束
