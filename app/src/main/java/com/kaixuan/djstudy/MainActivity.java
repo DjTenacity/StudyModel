@@ -24,6 +24,10 @@ import com.kaixuan.djstudy.handler.Handler2;
 import com.kaixuan.djstudy.handler.Handler3;
 import com.kaixuan.djstudy.handler.Request3;
 import com.kaixuan.djstudy.interpretor.Caculator;
+import com.kaixuan.djstudy.observer.AbstractSubject;
+import com.kaixuan.djstudy.observer.ConcreteObserver;
+import com.kaixuan.djstudy.observer.ConcreteSubject;
+import com.kaixuan.djstudy.observer.Observer;
 import com.kaixuan.djstudy.prototype.OrderDealFactory;
 import com.kaixuan.djstudy.prototype.PersonOrder;
 import com.kaixuan.djstudy.simplefactory1.ExportTextOperator;
@@ -181,5 +185,30 @@ public class MainActivity extends AppCompatActivity {
         }.execute();
     }
 
+    //观察者模式   一对多   onTouchEvent也是观察者模式,不过是一对一
+    public void observer(View view) {
+        //建立被观察者
+        AbstractSubject abstractSubject = new AbstractSubject();
+
+        //建立观察者
+        Observer observer1 = new ConcreteObserver("观察者  1");
+        Observer observer2 = new ConcreteObserver("观察者  2");
+        Observer observer3 = new ConcreteObserver("观察者  3");
+        Observer observer4 = new ConcreteObserver("观察者  4");
+
+        //建立联系
+        abstractSubject.attach(observer1);
+        abstractSubject.attach(observer2);
+        abstractSubject.attach(observer3);
+        abstractSubject.attach(observer4);
+
+        //开始通知观察者
+        abstractSubject.notify("国庆假期结束了");
+        //注销掉
+        abstractSubject.detach(observer1);
+        abstractSubject.detach(observer2);
+        abstractSubject.detach(observer3);
+        abstractSubject.detach(observer4);
+    }
 }
 //正则表达式"^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$"  ^是开始,$是结束
