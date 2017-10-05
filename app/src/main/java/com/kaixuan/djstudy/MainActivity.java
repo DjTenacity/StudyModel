@@ -22,6 +22,7 @@ import com.kaixuan.djstudy.handler.Handler1;
 import com.kaixuan.djstudy.handler.Handler2;
 import com.kaixuan.djstudy.handler.Handler3;
 import com.kaixuan.djstudy.handler.Request3;
+import com.kaixuan.djstudy.interpretor.Caculator;
 import com.kaixuan.djstudy.prototype.OrderDealFactory;
 import com.kaixuan.djstudy.prototype.PersonOrder;
 import com.kaixuan.djstudy.simplefactory1.ExportTextOperator;
@@ -33,9 +34,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-//AOP就是将编译时的代码替换成想要的代码,编译后的代码和非aop的是一样的代码
+    //AOP就是将编译时的代码替换成想要的代码,编译后的代码和非aop的是一样的代码
     //就是打一个注解,在class文件里面做一个替换
 
+    //工厂模式:构建一个对象
     void simpleFactory(View view) {
         //简单工厂
         Factory.create(1).show();
@@ -77,7 +79,8 @@ public class MainActivity extends AppCompatActivity {
         factory.dealOrder(order);
     }
 
-    //建造者模式
+    //建造者模式 :对象特别复杂,扩展性很强,,,表示和构建分离
+    //
     void builderModle(View view) {
 
         Build build = new WorkBuilder();
@@ -116,18 +119,32 @@ public class MainActivity extends AppCompatActivity {
                 }).create().show();
     }
 
-    /**责任链模式.....单链表*/
-    public void handlerModle(View view){
+    /**
+     * 责任链模式.....单链表
+     * <p>
+     * 事件分发机制:首先获取事件的是activity---->window---->decorlView
+     * 广播BroadcastReceiver的原理:
+     */
+    public void handlerModle(View view) {
         //确定链式关系
-        Handler handler1=new Handler1();
-        Handler handler2=new Handler2();
-        Handler handler3=new Handler3();
-        handler1.nextHandler=handler2;
-        handler2.nextHandler=handler3;
+        Handler handler1 = new Handler1();
+        Handler handler2 = new Handler2();
+        Handler handler3 = new Handler3();
+        handler1.nextHandler = handler2;
+        handler2.nextHandler = handler3;
 
-        AbstractRequest request3=new Request3("请求1");
+        AbstractRequest request3 = new Request3("请求1");
 
         handler1.handleRequest(request3);
     }
+
+    //解释器模式
+    public void interpretor(View view) {
+        String contentString = "3 * 5 * 7 / 3";
+        Caculator caculator = new Caculator();
+        int result = caculator.build(contentString);
+
+    }
+
 
 }
