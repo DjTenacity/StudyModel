@@ -34,6 +34,8 @@ import com.kaixuan.djstudy.simplefactory1.ExportTextOperator;
 import com.kaixuan.djstudy.simplefactory2.Factory;
 import com.kaixuan.djstudy.template.Game;
 import com.kaixuan.djstudy.template.LoLGame;
+import com.kaixuan.djstudy.templotor.TVStatusControl;
+import com.kaixuan.djstudy.templotor.TvControl;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -209,6 +211,19 @@ public class MainActivity extends AppCompatActivity {
         abstractSubject.detach(observer2);
         abstractSubject.detach(observer3);
         abstractSubject.detach(observer4);
+    }
+
+    //状态模式   可以与策略模式互换
+    public void templotor() {
+        //遥控器-->不用状态模式
+        TvControl tvControl = new TvControl();
+        tvControl.powerOff();
+
+        //使用状态模式
+        TVStatusControl tvStatusControl = new TVStatusControl();
+        tvStatusControl.powerOn();
+        tvStatusControl.nextChannel();
+        tvStatusControl.powerOff();
     }
 }
 //正则表达式"^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$"  ^是开始,$是结束
