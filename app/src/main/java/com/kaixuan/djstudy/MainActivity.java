@@ -32,6 +32,9 @@ import com.kaixuan.djstudy.prototype.OrderDealFactory;
 import com.kaixuan.djstudy.prototype.PersonOrder;
 import com.kaixuan.djstudy.simplefactory1.ExportTextOperator;
 import com.kaixuan.djstudy.simplefactory2.Factory;
+import com.kaixuan.djstudy.strategy.MemberContext;
+import com.kaixuan.djstudy.strategy.Strategy;
+import com.kaixuan.djstudy.strategy.Strategy1;
 import com.kaixuan.djstudy.template.Game;
 import com.kaixuan.djstudy.template.LoLGame;
 import com.kaixuan.djstudy.templotor.TVStatusControl;
@@ -225,5 +228,14 @@ public class MainActivity extends AppCompatActivity {
         tvStatusControl.nextChannel();
         tvStatusControl.powerOff();
     }
+
+    //策略模式
+    public void Strategy() {
+        Strategy strategy = new Strategy1();
+        MemberContext memberContext = new MemberContext(strategy);
+        System.out.print("打折后" + memberContext.caculetor(100.00));
+    }
+
+    //
 }
 //正则表达式"^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$"  ^是开始,$是结束

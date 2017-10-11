@@ -7,13 +7,12 @@ package com.kaixuan.djstudy.strategy;
  * @version : Administrator1.0
  * @date : 2017/9/22
  */
-public class Strategy {
+public interface Strategy {
 
-    public double strategyInterface(double bookPrice){
-
-
-        return 0;
-    }
-
+    /**调用层
+     * 传进的原价
+     * 返回打折后的价格
+     * */
+    public double strategyInterface(double bookPrice);
 
 }
