@@ -1,5 +1,8 @@
 package com.kaixuan.djstudy;
 
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
+import android.animation.ValueAnimator;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.support.v7.app.AlertDialog;
@@ -7,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.Toast;
 
 import com.kaixuan.djstudy.abstractfactory.BlueFactory;
@@ -227,13 +231,31 @@ public class MainActivity extends AppCompatActivity {
         tvStatusControl.powerOn();
         tvStatusControl.nextChannel();
         tvStatusControl.powerOff();
+
+        /**
+         * TVStatusControl在这里setState(...)并进行相应的操作就是策略模式
+         */
     }
 
     //策略模式
-    public void Strategy() {
+    public void Strategy(View v) {
         Strategy strategy = new Strategy1();
         MemberContext memberContext = new MemberContext(strategy);
         System.out.print("打折后" + memberContext.caculetor(100.00));
+
+//     策略模式之动画框架
+        ValueAnimator alpha = ObjectAnimator.ofFloat(v, "ScaleX", 0f, 1f);
+        alpha.setDuration(2000);
+        alpha.setInterpolator(new DecelerateInterpolator());//设置动画插入器,减速
+        alpha.setRepeatCount(-1);//无线
+        alpha.start();
+
+        PropertyValuesHolder pvhY = PropertyValuesHolder.ofFloat("scaleX", 1f, 0, 1f);
+        PropertyValuesHolder pvhZ = PropertyValuesHolder.ofFloat("scaleY", 1f, 0, 1f);
+        ObjectAnimator animator = ObjectAnimator.ofPropertyValuesHolder(v, pvhY, pvhZ);
+        animator.setDuration(2000);
+        animator.setRepeatCount(-1);//无线
+        animator.start();
     }
 
     //

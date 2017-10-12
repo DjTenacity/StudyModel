@@ -1,0 +1,44 @@
+ObjectAnimator->offFloat
+PropertyValuesHolder.ofFloat 实例化FloateProtyValuesHodler
+FloateProtyValuesHodler封装了动画执行类
+构造函数调用setFloatValues方法
+KeyframeSet--》ofFloat  可变参数的关键帧，
+Keyframe.ofFloat实例化一帧，将参数进行封装。
+实例化ObjectAnimator只是做了动画关键帧的解析
+---------------------------------------------------------------------------------
+ValueAnimator--》start 开启动画
+首先调用子类start，后调用父类start方法
+开启动画
+ValueAnimator->startAnimator() 初始化动画
+ObjectAnimtor->initAnimator()   （重点： 先调用子类方法 后调用父类）  1
+ProteryValueHodler->setupSetterAndGetter  将成员变量mSetter 赋值  （注意调用顺序）  2
+ValueAnimator->initAnimator()   （被子类调用）   3
+
+
+ValueAnimator->animateBasedOnTime 计算动画执行百分比。参数为绝对时间
+ObjectAnimatior->animatieValue(重点   先调用子类的方法 再调用父类)fraction参数 代表0~1；
+ValueAnimator->animateValue（得到插值器运行的百分比）
+ProteryValueHodler->cacultorValue()  这个方法主要是赋值给mAnimatorValue这个变量
+
+ProteryValueHodler-》setAnimatvalue()   通过mSetter这个Method对象反射的方式设置控件宽高（View-》setScaleX）
+该method代表 setScaleX（）方法
+
+-------------------------------------------------------------------------------------------
+
+
+
+
+
+
+当Vsync信号发出的时候  会回调mFrameCallback对象中的doFrame
+
+Choreographer机制，  用于同Vsync机制配合，实现统一调度界面绘图
+
+
+ AnimationHandler.getInstance(); 得到单例的 AnimationHandler
+
+---------------------------------------------------------------------
+属性动画调用原理
+是不断调用setScaleX
+View.setScaleX（1） View.setScaleX（0.9） View.setScaleX（0.8） View.setScaleX（0.7）
+View.setTranslationX(100)
