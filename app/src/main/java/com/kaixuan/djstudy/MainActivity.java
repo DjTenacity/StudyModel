@@ -21,6 +21,8 @@ import com.kaixuan.djstudy.buildermodel.Room;
 import com.kaixuan.djstudy.buildermodel.WorkBuilder;
 import com.kaixuan.djstudy.buildmodel2.Room2;
 import com.kaixuan.djstudy.buildmodel2.WorkBuider2;
+import com.kaixuan.djstudy.decorate.simple1.PersonEat;
+import com.kaixuan.djstudy.decorate.simple1.TeacherEat;
 import com.kaixuan.djstudy.handler.AbstractRequest;
 import com.kaixuan.djstudy.handler.Handler;
 import com.kaixuan.djstudy.handler.Handler1;
@@ -258,6 +260,17 @@ public class MainActivity extends AppCompatActivity {
         animator.start();
     }
 
-    //
+    //装饰模式   不调用继承就扩展一个类的功能,使其更加强大  一般的写法new对象调用方法
+    public void decorte(){
+        PersonEat eat= new PersonEat();
+        TeacherEat teacherEat =new TeacherEat(eat);
+        teacherEat.eat();
+
+
+        //装饰设计模式的写法::一般都是八类对象作为构造参数传递
+
+    }
+
+
 }
 //正则表达式"^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$"  ^是开始,$是结束
