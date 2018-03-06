@@ -16,7 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SingletonActivity"></activity>
+        <activity android:name=".SingletonActivity" />
+        <activity android:name=".DecorateActivity"></activity>
     </application>
 
 </manifest>
