@@ -11,10 +11,35 @@ import android.widget.TextView;
 
 import com.kaixuan.djstudy.decorate.simple2.WrapRecyclerAdapter;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+
 /**
  * 装饰设计模式
  */
 public class DecorateActivity extends AppCompatActivity {
+
+    public void ioDecorate(){
+
+        try {
+            FileReader fr=new FileReader(("xxx.file"));
+
+            //fr.read();
+
+            BufferedReader bfr =new BufferedReader(fr);
+            //包裹了之后添加了readline的方法
+           // bfr.readLine();
+
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
