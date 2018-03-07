@@ -36,3 +36,14 @@ ConcreteClass具体实现类  选择性的重定义算法中某些特定步骤
                     -->drawBackground(canvas);    //绘制背景
                     -->if(!dirtyOpaque)onDraw(canvas);      //绘制自己
                     -->dispatchDraw(canvas);       //绘制子孩子
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+BaseActivity  模板模式用来控制父类的流程, 插件化开发hook启动流程
+
+okhttp的Dispatcher(线程池)
+
+线程的执行时间:
+T = T1(线程的创建时间) + T2(run方法的执行时间) + T3(线程的销毁时间)
+解决线程反复的创建和销毁,做到线程可以复用
