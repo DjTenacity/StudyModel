@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
-import android.widget.Toast;
 
 import com.kaixuan.djstudy.abstractfactory.BlueFactory;
 import com.kaixuan.djstudy.abstractfactory.IFactory;
@@ -32,7 +31,6 @@ import com.kaixuan.djstudy.handler.Request3;
 import com.kaixuan.djstudy.interpretor.Caculator;
 import com.kaixuan.djstudy.observer.AbstractSubject;
 import com.kaixuan.djstudy.observer.ConcreteObserver;
-import com.kaixuan.djstudy.observer.ConcreteSubject;
 import com.kaixuan.djstudy.observer.Observer;
 import com.kaixuan.djstudy.prototype.OrderDealFactory;
 import com.kaixuan.djstudy.prototype.PersonOrder;
@@ -41,8 +39,8 @@ import com.kaixuan.djstudy.simplefactory2.Factory;
 import com.kaixuan.djstudy.strategy.MemberContext;
 import com.kaixuan.djstudy.strategy.Strategy;
 import com.kaixuan.djstudy.strategy.Strategy1;
-import com.kaixuan.djstudy.template.Game;
-import com.kaixuan.djstudy.template.LoLGame;
+import com.kaixuan.djstudy.template.simple1.Game;
+import com.kaixuan.djstudy.template.simple1.LoLGame;
 import com.kaixuan.djstudy.templotor.TVStatusControl;
 import com.kaixuan.djstudy.templotor.TvControl;
 
@@ -172,6 +170,8 @@ public class MainActivity extends AppCompatActivity {
     public void template(View view) {
         Game game = new LoLGame();
         game.play();
+        //内有枚举 Status  只能执行一次
+       // new Task().execute();
 
         AsyncTask asyncTask = new AsyncTask() {
             @Override
@@ -194,6 +194,26 @@ public class MainActivity extends AppCompatActivity {
                 super.onPostExecute(o);
             }
         }.execute();
+    }
+
+    public class Task extends AsyncTask<Void,Integer,String>{
+        @Override
+        protected String doInBackground(Void... voids) {
+            //做耗时的操作 子线程   是在线程池中运行的
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            //执行完成 主线程 用handler切换过来
+            super.onPostExecute(s);
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            //更新部分 主线程
+            super.onProgressUpdate(values);
+        }
     }
 
     //观察者模式   一对多   onTouchEvent也是观察者模式,不过是一对一

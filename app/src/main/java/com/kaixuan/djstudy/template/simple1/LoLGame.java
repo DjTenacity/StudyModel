@@ -1,4 +1,6 @@
-package com.kaixuan.djstudy.template;
+package com.kaixuan.djstudy.template.simple1;
+
+import com.kaixuan.djstudy.template.simple1.Game;
 
 /**
  * Comment:

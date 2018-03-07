@@ -1,4 +1,4 @@
-package com.kaixuan.djstudy.template;
+package com.kaixuan.djstudy.template.simple1;
 
 /**
  * Comment:定义算法结构,还可以提供通用实现
