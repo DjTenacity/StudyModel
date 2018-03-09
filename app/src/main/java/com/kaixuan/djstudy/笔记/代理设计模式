@@ -8,4 +8,15 @@ simple1 静态代理:        要添加功能时会很麻烦
                  被代理对象
 
 
-simple2 动态代理:        Java提供的
+simple2 动态代理:     Java提供的
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+retrofit就是基于OkHttp基础上来封装的
+Retrofit的create要传入  接口.class   的原理就是动态代理
+
+1)如果要实现Retrofit一样的代码:
+    1.解析方法的所有注解,比如  @POST  @GET这些
+    2.解析参数的所有注解,比如  FieldMap Part 等等
+    3.封装成Call(Okhttp)对象
+    4.返回的Call对象
