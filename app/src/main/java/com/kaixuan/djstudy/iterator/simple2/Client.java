@@ -21,6 +21,7 @@ public class Client {
             QQUserSystem qqUserSystem =new QQUserSystem();
             loginUserInfo = queryUserInfo("4", "4",qqUserSystem.iterator());
         }
+        //可以是从多个数据库获取想要的的数据,或者是, 获取到的数据有list,set等等
 
     }
 

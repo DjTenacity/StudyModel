@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".SingletonActivity" />
-        <activity android:name=".DecorateActivity"></activity>
+        <activity android:name=".DecorateActivity" />
+        <activity android:name=".iterator.simple3.TabItemActivityActivity"></activity>
     </application>
 
 </manifest>

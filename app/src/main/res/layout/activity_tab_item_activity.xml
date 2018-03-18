@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.kaixuan.djstudy.iterator.simple3.TabItemActivityActivity">
+<com.kaixuan.djstudy.iterator.simple3.TabBottomNavigation
+    android:layout_width="match_parent"
+    android:id="@+id/tab"
+    android:layout_height="100dp">
+
+</com.kaixuan.djstudy.iterator.simple3.TabBottomNavigation>
+
+
+</LinearLayout>

@@ -7,6 +7,6 @@ import com.kaixuan.djstudy.iterator.simple2.iterator.Iterator;
  */
 
 public interface Aggregate <T> {
-
+    //Aggregate 离开iterator就不能用
     Iterator<T> iterator();
 }
