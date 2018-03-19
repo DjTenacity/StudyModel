@@ -1,0 +1,19 @@
+1. 反射
+
+        基于字节码 class (一个类的class在内存中只有一份,而且class其实也是一个对象 Class),(数据库就是通过反射去拿字段)
+
+    (1) 获取构造函数
+        TestBean.class.getDeclaredConstructor(String.class);
+
+    (2) 获取方法
+        TestBean.class.getDeclaredMethod("printName2");
+
+    (3) 获取属性
+         TestBean.class.getDeclaredField("name");
+
+
+
+
+2. 注解
+
+    通过反射和注解去findVIewById()
