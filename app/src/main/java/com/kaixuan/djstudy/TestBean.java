@@ -1,5 +1,8 @@
 package com.kaixuan.djstudy;
 
+import android.app.Activity;
+import android.content.Intent;
+
 /**
  * Created by Administrator on 2018/3/19.
  */
@@ -29,4 +32,36 @@ public class TestBean {
     private void printName2() {
         System.out.println(name);
     }
+
+
+
+    private Object[] items=new Object[10];
+
+    public <T> void add(T t){
+        items[0] = t;
+    }
+
+    private <T> T reName(String name){
+        return  (T)getName2();
+    }
+
+
+    public abstract class HttpCallBack<T> {
+
+        public abstract void onSuccess(T result);
+    }
+
+
+    /**上限
+     * public void startActivity(Class<? extends BaseActivity> clazz) {
+         Intent intent =new Intent(this,clazz);
+         startActivity(intent);
+     }
+
+     下限  包括MainActivity和他的父类
+     public void startActivity(Class<? super MainActivity> clazz) {
+     Intent intent =new Intent(this,clazz);
+     startActivity(intent);
+     }
+     */
 }
