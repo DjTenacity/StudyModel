@@ -1,0 +1,32 @@
+
+//getDefault()单例
+EvenBus.getDefault().rigister();
+
+rigister()--->首先获取class对象,然后便利这个Class的所有方法,找到有Subscribe注解的所有方法,
+		生成一个集合返回
+
+
+//解绑是为了防止内存泄露
+EvenBus.getDefault().unrigister();
+
+
+第一步：
+findSubscriberMethods()去解析注册者对象的所有方法，并且找出带有注解 Subscribe 注解的的方法，
+然后通过Annotation解析所有细节参数（threadMode，priority，sticky，eventType，method），
+把这些参数封装成一个 SubscriberMethod，添加到集合返回。
+
+
+第二步：
+subscribe()解析所有 SubscriberMethod的eventType，然后按照要求解析成
+Map< Class<?>, CopyOnWriteArrayList<Subscription> > subscriptionsByEventType
+的格式，key 是 eventType  (String.class)，value就是 Subscription 的列表，Subscription包含两个属性subscriber，SubscriberMethod
+
+
+第三步：
+post()
+遍历 subscriptionsByEventType，找到符合的方法调用方法的 method.invoke() 执行。
+
+
+第四部：
+unregister()
+移除 (静态的)
