@@ -37,7 +37,6 @@ public class ThreadPoolTest {
 
     static {
 
-
         //会有20个Runnable 加入到线程队列(缓存队列),会先去取4个Runnable去执行,等这个四个运行完毕,就又回去取4个Runnable交给线程池来执行
         threadPoolExecutor = new ThreadPoolExecutor(
                 4,//核心线程数,就是线程池里面的核心线程数量

@@ -8,7 +8,7 @@ import com.kaixuan.djstudy.iterator.simple3.iterator.ListTabIterator;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**BottomNavigationBar*/
 public class TabItemActivityActivity extends AppCompatActivity {
 
 

@@ -287,7 +287,7 @@ public class MainActivity extends AppCompatActivity {
         teacherEat.eat();
 
 
-        //装饰设计模式的写法::一般都是八类对象作为构造参数传递
+        //装饰设计模式的写法::一般都是把类对象作为构造参数传递
 
         //RecycleView 利用装饰设计模式来添加头部和底部  ,可以参考ListView的 addHeardView方法  --->heardViewListAdapter
         //
