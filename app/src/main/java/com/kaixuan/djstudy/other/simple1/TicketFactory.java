@@ -1,6 +1,9 @@
 package com.kaixuan.djstudy.other.simple1;
 
+import android.util.SparseArray;
+
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
 /**
@@ -8,7 +11,6 @@ import java.util.Map;
  */
 
 public class TicketFactory {
-
     static Map<String, Ticket> sTicketMap = new HashMap<>();
 
     public Ticket getTicket(String from, String to) {

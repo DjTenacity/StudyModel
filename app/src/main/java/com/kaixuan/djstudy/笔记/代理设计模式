@@ -22,6 +22,9 @@ simple2 动态代理:     Java提供的     BankInvocationHandler 继承Invocati
         //当调用这个方法的时候,会来到BankInvocationHandler的invoke方法
         iBank.applyBank();
 
+//每次调用生成的API实例的时候,都会调用 InvocationHandler 的invoke方法
+//retrofit 就是通过这个方法 把api实例对象里面的方法转化为一个个网络请求的
+// retrofit builder的时候会检验自身的okhttpClient,为空的话会创建一个
 ++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 retrofit就是基于OkHttp基础上来封装的

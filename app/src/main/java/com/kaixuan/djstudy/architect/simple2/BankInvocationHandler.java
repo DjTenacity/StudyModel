@@ -32,6 +32,12 @@ public class BankInvocationHandler implements InvocationHandler
         Object voidObject= method.invoke(mObject,objects);
         System.out.println("MethodName~~~~~~~~22222");
 
+        //MethodName~~~~~~~~applyBank
+        //DJ没钱也办卡
+        //MethodName~~~~~~~~22222
+        //MethodName~~~~~~~~lost
+        //DJ卡丢了
+        //MethodName~~~~~~~~22222
         return voidObject;
     }
 }
